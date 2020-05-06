@@ -6,35 +6,41 @@
 <h1>User info</h1>
 <p><%= @user.name %></p>
 <p><%= @user.email %></p>
+
+
+  <%= form_for(@book) do |f| %>
+
+    <h6>Title</h6>
+    <%= f.text_field :title %>
+ 
+    <h6>Opinion</h6>
+    <%= f.text_area :body %>
+ <br>
+    <%= f.submit 'Create Book' %>
+ 
+<% end %>
 </div>
 
-
-  <h2>Users</h2>
+  <h2>Books</h2>
   <div class="col-lg-9">
   <table class="table">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Title</th>
+        <th>Opinion</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      <% @books.each do |book| %>
+    <tr> 
+    <td>
+    <%= book.title %>
+    </td>
+    <td>
+    <%= book.body %>
+    </td>
+    </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

@@ -27,22 +27,28 @@
     <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="navbarEexample7">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Home</a></li>
+        <li><%= link_to 'Home', user_path(current_user.id) %></li>
         <li class="active"><a href="#">Users</a></li>
-        <li><a href="#">Books</a></li>
-        <li><a href="#">logout</a></li>
+        <li><%= link_to 'Books', books_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      </ul>
     <% else %>
     <div class="collapse navbar-collapse" id="navbarEexample7">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Home</a></li>
-        <li class="active"><a href="#">About</a></li>
-        <li><a href="#">sign up</a></li>
-        <li><a href="#">login</a></li>
+        <li><%= link_to 'Home', root_path %></li>
+        <li class="active"><%= link_to 'About', about_path %></li>
+        <li><%= link_to 'sign up', new_user_registration_path %></li>
+        <li><%= link_to 'login', new_user_session_path %></li>
     <% end %>
       </ul>
-    </div>
-  </div>
 </nav>
 <%= yield %>
+<div class="row">
+  <div class="col-lg-10">
+ <footer>
+    <p class="footer-text">CopyRight Infratop.Inc.</p>
+  </footer>
+</div>
+</div>
   </body>
 </html>
