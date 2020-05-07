@@ -4,14 +4,14 @@
 	<div class="row">
 <div class="col-lg-3">
 <h1>User info</h1>
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
+<p>name     <%= @user.name %></p>
+<p>introduction     <%= @user.email %></p>
 
 <% if @user.id == current_user.id %>
         <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
     <% end %>
 
-
+<h2>New Book</h2>
   <%= form_for(@book) do |f| %>
 
     <h6>Title</h6>

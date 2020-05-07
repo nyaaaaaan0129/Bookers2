@@ -27,18 +27,20 @@
     <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="navbarEexample7">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', user_path(current_user.id) %></li>
-        <li class="active"><a href="#">Users</a></li>
-        <li><%= link_to 'Books', books_path %></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <li><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to 'Home', user_path(current_user.id) %></li>
+        <li class="active"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">Users</a></li>
+        <li><span class="glyphicon glyphicon-book" aria-hidden="true"></span><%= link_to 'Books', books_path %></li>
+        <li>  
+<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       </ul>
     <% else %>
     <div class="collapse navbar-collapse" id="navbarEexample7">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', root_path %></li>
-        <li class="active"><%= link_to 'About', about_path %></li>
-        <li><%= link_to 'sign up', new_user_registration_path %></li>
-        <li><%= link_to 'login', new_user_session_path %></li>
+        <li><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to 'Home', root_path %></li>
+        <li class="active"> 
+<span class="glyphicon glyphicon-link" aria-hidden="true"></span><%= link_to 'About', about_path %></li>
+        <li><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to 'sign up', new_user_registration_path %></li>
+        <li><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><%= link_to 'login', new_user_session_path %></li>
     <% end %>
       </ul>
 </nav>

@@ -1,0 +1,23 @@
+
+
+<div class="container">
+	<div class="row">
+<div class="col-lg-3">
+
+<h3>User Info</h3>
+
+  <%= form_for(@user) do |f| %>
+
+    <h6>Name</h6>
+    <%= f.text_field :name %>
+ 
+    <h6>Introduction</h6>
+    <%= f.text_area :introduction %>
+ <br>
+    <%= f.submit 'Update User' %>
+ 
+<% end %>
+
+</div>
+</div>
+</div>
