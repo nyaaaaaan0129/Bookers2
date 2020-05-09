@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+<div class="col-xs-3"></div>
+<div class="col-xs-6">
+<h3>Editing Book</h3>
+
+
+<% if @book.errors.any? %>
+<div class="alert alert-danger">
+<h2><%= @book.errors.count %> errors </h2>
+<ul>
+	<% @book.errors.full_messages.each do |message| %>
+	<li><%= message %></li>
+	<% end %>
+</ul>
+</div>
+<% end %>
+
+  <%= form_for(@book) do |f| %>
+
+    <h6>Title</h6>
+    <%= f.text_field :title %>
+ 
+    <h6>Introduction</h6>
+    <%= f.text_area :body %>
+ <br>
+    <%= f.submit 'Update Book' %>
+ 
+<% end %>
+
+<div class="show">
+<%= link_to "Show", book_path(@book) %>
+</div>
+<div class="back">
+<%= link_to "Back", books_path %>
+</div>
+</div>
+</div>
+</div>
+</div>
