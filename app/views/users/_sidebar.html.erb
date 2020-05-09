@@ -39,13 +39,18 @@
     <% end %>
 
 <h2>New book</h2>
+
   <%= form_for(book) do |f| %>
 
     <h6>Title</h6>
-    <%= f.text_field :title %>
+    <div class="new_book">
+    <%= f.text_field :title, :size=>"36%" %>
+    </div>
  
     <h6>Opinion</h6>
-    <%= f.text_area :body %>
+    <div class="new_book">
+    <%= f.text_area :body, :size=>"35%" %>
+  </div>
  <br>
     <%= f.submit 'Create Book', class:"btn btn-info btn-block text-info" %>
  
