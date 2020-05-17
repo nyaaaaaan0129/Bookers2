@@ -17,6 +17,28 @@
 @import "bootstrap";
 
 
+.image1 {
+background-image: url(image1.jpg);
+}
+.image2 {
+background-image: url(image2.jpg);
+}
+.image3 {
+background-image: url(image3.jpg);
+}
+.image4 {
+background-image: url(image4.jpg);
+}
+.image5 {
+background-image: url(image5.jpg);
+}
+
+#container{
+  height: 500px;
+  width: 600px;
+}
+
+
 
 .navbar
 {
@@ -68,6 +90,7 @@ border-radius: 0px; /* ボックスの四つ角を丸くする */
 	padding-top: 100%;
 }
 
+
 .img-square {
 	position: absolute;
 	top: 50%;
@@ -77,6 +100,7 @@ border-radius: 0px; /* ボックスの四つ角を丸くする */
 	height: 100%;
 	object-fit: cover;
 }
+
 
 
 footer
