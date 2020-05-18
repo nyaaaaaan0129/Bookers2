@@ -15,7 +15,6 @@ class BookCommentsController < ApplicationController
         # comment = book.book_comments.find(params[:id])
         # comment.destro
         redirect_to book_path(comment.book_id)
-
         # # ==========================================
         # book = Book.find(params[:book_id])
         # comment = BookComment.find(params[:book_comment_id]) # link_to book_comment_id
