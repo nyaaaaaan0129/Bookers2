@@ -80,6 +80,17 @@
         </table>
 
        <!-- コメント投稿欄 -->
+       <% if @book_comment.errors.any? %>
+         <div class="alert alert-danger">
+            <h2><%= @book_comment.errors.count %> errors </h2>
+              <ul>
+                <% @book_comment.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+              </ul>
+        </div>
+      <% end %>
+
 　　　　<%= form_for [@book_show, @book_comment] do |f| %>
     　　<div class="row">
         <div class="col-sm-12">

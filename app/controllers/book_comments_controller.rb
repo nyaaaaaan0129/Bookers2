@@ -1,12 +1,19 @@
 class BookCommentsController < ApplicationController
 
 	def create
-		book = Book.find(params[:book_id])
-		comment = BookComment.new(book_comment_params)
-		comment.user_id = current_user.id
-		comment.book_id = book.id
-		comment.save
-		redirect_to book_path(book)
+        @book = Book.new
+		@book_show = Book.find(params[:book_id])
+		@book_comment = BookComment.new(book_comment_params)
+		@book_comment.user_id = current_user.id
+		@book_comment.book_id = @book_show.id
+		if @book_comment.save
+		redirect_to book_path(@book_show), notice: "Book comment was successfully created."
+        else
+        @user = User.find(@book_show.user_id)
+        # @book_comment = BookComment.new
+        @book_comments = @book_show.book_comments
+        render "books/show"
+        end
 	end
 	def destroy
         # book = Book.find(params[:book_id])
