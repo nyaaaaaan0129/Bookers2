@@ -53,6 +53,19 @@
    <p><%= alert %></p>
 <% end %>
 </div>
+
+<div class="search_form">
+<% if logged_in? %>
+<div class="search">
+<%= form_tag(users_search_path, :method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= select_tag(:option1, options_for_select([["User", "1"],["Book","2"]]))%> 
+    <%= select_tag(:option2, options_for_select([["部分一致", "1"],["完全一致","2"], ["前方一致","3"], ["後方一致","4"]]))%>
+    <%= submit_tag 'Search' %>
+<% end %>
+</div>
+</div>
+<% end %>
 <%= yield %>
 <div class="row">
   <div class="col-xs-11">
