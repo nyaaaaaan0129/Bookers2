@@ -1,35 +1,72 @@
-<div class="container">
-  <div class="row">
+
+
     <div class="col-xs-3">
-      <h2>User info</h2>
-    <div class="user-edit-image">
+      <div class="user_info">
+       <h2>User info</h2>
+       <div class="user-edit-image">
         <%= attachment_image_tag user, :profile_image, class: "img-square", fallback: "no_image.jpg", size: "100x100" %>
-    </div>
-    <table class="table">
-      <tr>
-        <th>name</th>
-          <td><%= user.name %></td>
-      </tr>
-      <tr>
-        <th>introduction</th>
-          <td><%= user.introduction %></td>
-      </tr> 
-    </table>
+       </div>
+       <table class="table">
+        <tr>
+         <th>name</th>
+           <td><%= user.name %></td>
+        </tr>
+        <tr>
+         <th>introduction</th>
+           <td><%= user.introduction %></td>
+        </tr> 
+        <tr>
+         <th>follows</th>
+           <td>
+             <a href="<%= following_user_path(user) %>">
+                <strong id="following" class="stat">
+                  <%= user.following.count %>
+                </strong>
+             </a>
+           </td>
+        </tr>
+        <tr>
+         <th>followers</th>
+           <td>
+             <a href="<%= followers_user_path(user) %>">
+               <strong id="followers" class="stat">
+                 <%= user.followers.count %>
+               </strong>
+             </a>
+           </td>
+        </tr>
+       </table>
+     </div>
+     <div class="follow_button">
+       <% unless current_user == user %>
+          <% if current_user.following?(user) %>
+              <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }, local: true) do |f| %>
+              <%= f.submit "Unfollow", class: "btn btn-info" %>
+              <% end %>
+          <% else %>
+               <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
+                <div><%= hidden_field_tag :followed_id, user.id %></div>
+                <%= f.submit "Follow", class: "btn btn-primary" %>
+                <% end %>
+           <% end %>
+      <% end %>
+     </div>
 
-
-    
-
+  <div class="user_edit">
     <% if current_user.id == user.id %>
-    <%= link_to edit_user_path(user), class:"btn btn-info btn-block text-info" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
+    <div class="edit_button"><%= link_to edit_user_path(user), class:"btn btn-info btn-block text-info" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
+    </div>
     <% else %>
 
-    <%= link_to user_path(current_user.id), class:"btn btn-info btn-block text-info" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
+    <div class="edit_button"><%= link_to user_path(current_user.id), class:"btn btn-info btn-block text-info" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %>
+    </div>
     <% end %>
+</div>
 
-
+  <div class="error messages">
     <% if book.errors.any? %>
       <div class="alert alert-danger">
-        <h2><%= book.errors.count %> errors </h2>
+         <h2><%= book.errors.count %> errors </h2>
           <ul>
             <% book.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -37,8 +74,10 @@
           </ul>
       </div>
     <% end %>
+  </div>
 
-<h2>New book</h2>
+  <div class="new_book">
+  <h2>New book</h2>
 
   <%= form_for(book) do |f| %>
 
@@ -54,5 +93,7 @@
  <br>
     <%= f.submit 'Create Book', class:"btn btn-info btn-block text-info" %>
  
-<% end %>
+  <% end %>
+</div>
+
 </div>
